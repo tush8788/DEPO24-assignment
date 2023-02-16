@@ -11,7 +11,11 @@ const customerSchema=new mongoose.Schema({
     },
     customerAddress:{
         type:String,
-    }
+    },
+    cartProducts:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Cart'
+    }]
 });
 
 const Customer=mongoose.model('Customer',customerSchema);

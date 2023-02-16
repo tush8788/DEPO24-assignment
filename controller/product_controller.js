@@ -1,5 +1,5 @@
 const ProductDB=require('../models/products');
-
+// add product page
 module.exports.addProduct= async function(req,res){
     try{
         let products=await ProductDB.find({});
@@ -20,7 +20,7 @@ module.exports.addProduct= async function(req,res){
 //create product 
 module.exports.create=async function(req,res){
     try{
-        let product=await ProductDB.findOne({hsn:req.body.hsn});
+        let product=await ProductDB.findOne({dsin:req.body.DSIN});
         if(!product){
             product=await ProductDB.create({
                 dsin:req.body.DSIN,
