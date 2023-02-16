@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 mongoose.set('strictQuery',false);
 
-mongoose.connect('mongodb://localhost/Depo24)');
+mongoose.connect('mongodb://localhost/Depo24');
 
 const db=mongoose.connection;
 

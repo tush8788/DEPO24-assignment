@@ -5,6 +5,7 @@ const db=require('./config/mongoose');
 const port = 8000;
 
 const app=express();
+
 app.set('view engine','ejs');
 app.set('views','./views');
 
@@ -13,7 +14,7 @@ app.set('layout extractScripts',true);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(expressLayout);
-
+app.use(express.static('./assets'));
 
 app.use('/',require('./routes/index.js'));
 

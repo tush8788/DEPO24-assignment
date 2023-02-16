@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h3>Add Product</h3>
+            <form action="/product/create" method="post">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">DSIN</label>
+                    <input type="text" name="DSIN" class="form-control" id="formGroupExampleInput"
+                        placeholder="like:- MAG-100471.05" required>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Name of Product</label>
+                    <input type="text" class="form-control" name="name" id="formGroupExampleInput2"
+                        placeholder='like:- Magmus 3" Brass Locking L Hinges Satin Silver Premium 3" x 3/8 x 1.1/4 x 6 mm'
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">MRP</label>
+                    <input type="text" name="mrp" placeholder="like:- 190" required class="form-control"
+                        id="formGroupExampleInput2">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">HSN</label>
+                    <input type="text" name="hsn" placeholder="like:- 83021020" required class="form-control"
+                        id="formGroupExampleInput2">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">GST Slap</label>
+                    <input type="text" name="gstSlap" placeholder="like:- 18" required class="form-control"
+                        id="formGroupExampleInput2">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Unit</label>
+                    <input type="text" name="unit" placeholder="like:- Pcs" required class="form-control"
+                        id="formGroupExampleInput2">
+                </div>
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit">Add Product</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <div class="user-display">
+                <h3>Customers</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">DSIN</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">MRP</th>
+                            <th scope="col">HSN</th>
+                            <th scope="col">GST-Slap</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let product of products){ %>
+                            <tr>
+                                <td>
+                                    <%=product.dsin%>
+                                </td>
+                                <td>
+                                    <%=product.name%>
+                                </td>
+                                <td>
+                                    <%=product.mrp%>
+                                </td>
+                                <td>
+                                    <%=product.hsn%>
+                                </td>
+                                <td>
+                                    <%=product.gstSlap%>
+                                </td>
+                                <td>
+                                    <%=product.unit%>
+                                </td>
+                                <td>
+                                    <a href="/product/delete/<%=product._id%>" class="btn btn-dark">
+                                        delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

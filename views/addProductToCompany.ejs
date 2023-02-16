@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+
+            <div class="user-create-form">
+                <h3>Add Product</h3>
+                <form action="/customer/addProducts" method="post">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Products</label>
+                        <select class="form-select" name="productId" aria-label=".form-select-sm example">
+                            <% for(let product of products){%>
+                            <option value="<%=product._id%>"><%=product.name%></option>
+                            <%}%>
+                          </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Discount ( not need add % )</label>
+                        <input type="number" class="form-control" max="90" name="discount" id="formGroupExampleInput2" placeholder="like:- 50" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Quantity</label>
+                        <input type="number" min="1" name="qty" placeholder="like:- 4" required class="form-control" id="formGroupExampleInput2">
+                      </div>
+                      <div class="mb-3">
+                        <input type="hidden" name="customerId" value="<%=customer%>" required class="form-control" id="formGroupExampleInput2">
+                      </div>
+                      <div class="col-12 text-center">
+                        <button class="btn btn-primary" type="submit">Create Customer</button>
+                      </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-6">
+
+        </div>
+    </div>
+
+</div>
