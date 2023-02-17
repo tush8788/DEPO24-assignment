@@ -6,6 +6,8 @@ const flash=require('connect-flash');
 const notification=require('./config/Notification');
 // use session because of connect-flash
 const session=require('express-session');
+const passport=require('passport');
+const localStategy=require('./config/passport-local-strategy');
 const port = 8000;
 
 
@@ -23,11 +25,19 @@ app.use(expressLayout);
 
 app.use(express.static('./asstes'));
 
-app.use(session({ cookie: { maxAge: 60000 }, 
+app.use(session({ 
+    name:'userId',
     secret: 'woot',
     resave: false, 
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { 
+        maxAge: 1000*60*100 
+    }, 
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 app.use(flash());
 
