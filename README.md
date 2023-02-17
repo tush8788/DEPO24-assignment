@@ -32,5 +32,5 @@ This is DEPO24 assignment it is created for manage business. add customers, prod
 5. open command prompt and Type 'npm install' for download all dependencies
 6. then just "npm start"/ if npm start is not work just run this command 'node index.js'
 7. then go localhost:8000
-8. This Site is hosted on cyclic.sh
-9. Access link "https://jolly-lamb-outfit.cyclic.app/"
+8. This Site is hosted on railway.app
+9. Access link "https://depo24-assignment-production.up.railway.app/"
