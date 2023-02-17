@@ -8,7 +8,8 @@ const notification=require('./config/Notification');
 const session=require('express-session');
 const passport=require('passport');
 const localStategy=require('./config/passport-local-strategy');
-const port = 8000;
+const dotenv = require('dotenv').config()
+const port = process.env.PORT||8000;
 
 
 const app=express();

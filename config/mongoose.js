@@ -1,7 +1,8 @@
 const mongoose=require('mongoose');
 mongoose.set('strictQuery',false);
+const dotenv=require('dotenv').config()
 
-mongoose.connect('mongodb://localhost/Depo24');
+mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/Depo24');
 
 const db=mongoose.connection;
 
