@@ -62,7 +62,6 @@ module.exports.addProduct=async function(req,res){
 }
 // add Product To Customer
 module.exports.addProductToCustomer=async function(req,res){
-    // console.log(req.body);
     try{
         let cart=await CartDB.create({
             product:req.body.productId,

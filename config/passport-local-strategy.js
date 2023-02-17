@@ -1,7 +1,7 @@
 const passport=require('passport');
 const localStategy=require('passport-local').Strategy;
 const UserDB=require('../models/user');
-
+//setup passport
 passport.use(new localStategy({
     usernameField:'email',
     passReqToCallback:true
@@ -37,11 +37,11 @@ passport.deserializeUser( async function(id,done){
     }
 });
 
-passport.checkAuthentication=(req,res,next)=>{
+passport.checkAuthentication=function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
-    return res.redirect('/user/signin');
+    return res.redirect('/');
 }
 
 passport.setAuthenticatedUser=(req,res,next)=>{
@@ -50,3 +50,5 @@ passport.setAuthenticatedUser=(req,res,next)=>{
     }
     return next();
 }
+
+module.exports=passport;

@@ -19,7 +19,7 @@ module.exports.signUp=function(req,res){
 //create user
 module.exports.create= async function(req,res){
     try{
-        console.log(req.body);
+        // console.log(req.body);
         if(req.body.password!=req.body.ConformPassword){
             req.flash("error","password and confirm password not match..");
             return res.redirect('back');

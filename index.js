@@ -4,7 +4,6 @@ const expressLayout=require('express-ejs-layouts');
 const db=require('./config/mongoose');
 const flash=require('connect-flash');
 const notification=require('./config/Notification');
-// use session because of connect-flash
 const session=require('express-session');
 const passport=require('passport');
 const localStategy=require('./config/passport-local-strategy');
@@ -13,13 +12,13 @@ const port = process.env.PORT||8000;
 
 
 const app=express();
-
+// set up view engine ejs
 app.set('view engine','ejs');
 app.set('views','./views');
 
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
-
+// add body-parser
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(expressLayout);
