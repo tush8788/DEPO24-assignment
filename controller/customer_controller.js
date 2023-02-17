@@ -8,13 +8,16 @@ module.exports.create=async function(req,res){
         let customer=await CustomerDB.findOne({customerName:req.body.customerName});
         if(!customer){
             customer=await CustomerDB.create(req.body);
+            req.flash("success","Successfully Add Customer..");
             return res.redirect('back');
         }
+        req.flash("error","customer already exist in DB..");
         console.log("customer already exist in DB");
         return res.redirect('back');
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
     }
 
@@ -24,11 +27,12 @@ module.exports.delete=async function(req,res){
     try{
         await CustomerDB.findByIdAndDelete(req.params.id);
         await CartDB.deleteMany({customer:req.params.id});
-        console.log("delete successfully");
+        req.flash("success","Customer Detele Successfully..");
         return res.redirect("back")
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
     }
 }
@@ -43,6 +47,7 @@ module.exports.addProduct=async function(req,res){
                 path:"product",
             }
         });
+        
         return res.render('addProductToCompany',{
             title:"Add Product",
             products:product,
@@ -51,6 +56,7 @@ module.exports.addProduct=async function(req,res){
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
     }
 }
@@ -71,11 +77,13 @@ module.exports.addProductToCustomer=async function(req,res){
             customer.cartProducts.push(cart);
             customer.save();
         }
+        req.flash("success","Product Add Successfully..");
 
         return res.redirect('back');
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
     }
 }

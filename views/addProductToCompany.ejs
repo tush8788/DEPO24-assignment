@@ -1,9 +1,9 @@
+<link rel="stylesheet" href="/css/home.css">
 <div class="container">
-  <div><a href="/invoice/getInvoice/<%=customer._id%>">download invoice</a></div>
   <div class="row">
     <div class="col-6">
       <div class="user-create-form">
-        <h3>Add Product</h3>
+        <h3 class="text-center">Add Product</h3>
         <form action="/customer/addProducts" method="post">
           <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Products</label>
@@ -34,7 +34,7 @@
               id="formGroupExampleInput2">
           </div>
           <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit">Add Product</button>
+            <button class="btn btn-dark" type="submit">Add Product</button>
           </div>
         </form>
       </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="col-6">
       <div class="user-display">
-        <h3>Customers</h3>
+        <h3 class="text-center">Customers</h3>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -73,7 +73,7 @@
                 </td>
               </tr>
 
-            <%}%>
+              <%}%>
           </tbody>
         </table>
       </div>

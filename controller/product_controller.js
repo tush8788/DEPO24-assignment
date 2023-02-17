@@ -1,4 +1,6 @@
 const ProductDB=require('../models/products');
+const CartDB=require('../models/cart');
+const CustomerDB=require('../models/customer');
 // add product page
 module.exports.addProduct= async function(req,res){
     try{
@@ -30,16 +32,18 @@ module.exports.create=async function(req,res){
                 gstSlap:req.body.gstSlap,
                 unit:req.body.unit
             })
-
+        
+            req.flash("success","Product Add Successfully..");
             return res.redirect('back');
         }
-
-        console.log("already added");
+        req.flash("error","Product Already Exits ..");
+        // console.log("already added");
         return res.redirect('back');
 
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
     }
 }

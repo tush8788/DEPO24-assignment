@@ -5,6 +5,5 @@ const ProductController=require('../controller/product_controller');
 router.get('/addProduct',ProductController.addProduct);
 //add product 
 router.post('/create',ProductController.create);
-//delete product  todo leter
 
 module.exports=router;

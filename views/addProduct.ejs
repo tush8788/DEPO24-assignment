@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="/css/home.css">
 <div class="container">
     <div class="row">
         <div class="col-4">
+            <div>
             <h3>Add Product</h3>
             <form action="/product/create" method="post">
                 <div class="mb-3">
@@ -35,13 +37,14 @@
                         id="formGroupExampleInput2">
                 </div>
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary" type="submit">Add Product</button>
+                    <button class="btn btn-dark" type="submit">Add Product</button>
                 </div>
             </form>
+            </div>
         </div>
         <div class="col-8">
             <div class="user-display">
-                <h3>Customers</h3>
+                <h3>Products</h3>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -51,7 +54,6 @@
                             <th scope="col">HSN</th>
                             <th scope="col">GST-Slap</th>
                             <th scope="col">Unit</th>
-                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,11 +76,6 @@
                                 </td>
                                 <td>
                                     <%=product.unit%>
-                                </td>
-                                <td>
-                                    <a href="/product/delete/<%=product._id%>" class="btn btn-dark">
-                                        delete
-                                    </a>
                                 </td>
                             </tr>
                             <%}%>

@@ -1,0 +1,157 @@
+<div class="container" >
+    <div class="row-1">
+        <table border="2">
+            <thead>
+                <tr>
+                    <td colspan="3">
+                        <img src="https://media.licdn.com/dms/image/C4D0BAQFsb1FUZlm7VQ/company-logo_200_200/0/1653373725419?e=2147483647&v=beta&t=Px09afQ77kT0wtN7_An4Uv8mjBFkzpOjs59Vh8AwEfg" alt="" width="150"
+                            height="100">
+                    </td>
+                    <td colspan="3">
+                        <h4>Depo Solutions Private Limited</h4>
+                        <p>
+                            77/1/A, Christopher Road, Topsia,<br>Kolkata - 700046br
+                            West Bengal <br/>GSTIN: 19AAJCD1058P1Z4
+                        </p>
+                    </td>
+                    <td colspan="3">
+                        <div class="col">
+                            <h3>Proforma Invoice</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="col-6">
+                            <p>#</p>
+                            <p>Estimate Date</p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div >
+                            <p><b>:DEPO/KOL/PI/00007</b></p>
+                            <p><b>:<%=new Date().toISOString().split('T')[0]%></b></p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div>
+                            <p>place of Supply</p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div>
+                            <b>:<%=customer.customerAddress%></b>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        <p>Bill To</p>
+                    </td>
+                    <td colspan="4">
+                        <p>Ship To</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <h5><%=customer.customerName%></h5>
+                        <p><%=customer.customerAddress%></p>
+                        <p>GSTIN: <%=customer.customerGSTID%></p>
+                    </td>
+                    <td colspan="4">
+                        <h5><%=customer.customerName%></h5>
+                        <p><%=customer.customerAddress%></p>
+                        <p>GSTIN: <%=customer.customerGSTID%></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9"> 
+                        <table border="2">
+                            <thead>
+                                <tr>
+                                    <td scope="col" rowspan="2">Item</td>
+                                    <td scope="col" rowspan="2">HSN</td>
+                                    <td scope="col" rowspan="2">Qty</td>
+                                    <td scope="col" rowspan="2">Rate</td>
+                                    <td scope="col" rowspan="2">Discount</td>
+                                    <td scope="col" colspan="2">CGST</td>
+                                    <td scope="col" colspan="2">SGST</td>
+                                    <td scope="col" rowspan="2">Amount</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">%</td>
+                                    <td scope="col">Amt</td>
+                                    <td scope="col">%</td>
+                                    <td scope="col">Amt</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- subtotal -->
+                                <% let subtotal=0, gstAMT=0; %>
+                                <%for(let p of customer.cartProducts){%>
+                                    <tr>
+                                        <td scope="col"><%=p.product.name%></td>
+                                        <td scope="col"><%=p.product.hsn%></td>
+                                        <td scope="col"><%=p.quntity%></td>
+                                        <td scope="col"><%=p.product.mrp%></td>
+                                        <td scope="col"><%=p.discount%></td>
+                                        <td scope="col"><%=p.product.gstSlap%>%</td>
+                                        <!-- tax caluate -->
+                                        <% 
+                                            let taxAmt=p.product.mrp * p.product.gstSlap/100;
+                                            gstAMT+=taxAmt;
+                                        %>
+                                        <td scope="col"><%= taxAmt%></td>
+                                        <td scope="col"><%=p.product.gstSlap%>%</td>
+                                        <td scope="col"><%=taxAmt%></td>
+                                        <!-- amount calculate after discount -->
+                                        <% 
+                                            let amtAfterDiscount= (p.product.mrp*p.quntity)*p.discount/100
+                                            subtotal+=amtAfterDiscount;    
+                                        %>
+                                        <td><%=amtAfterDiscount%></td>
+                                    </tr>
+                                      
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+
+                    </td>
+                    <td colspan="2">
+                        <p>Sub Total </p>
+                        <p>CGST  </p>
+                        <p>SGST  </p>
+                        <b>Total </b>
+                    </td>
+                    <td colspan="2">
+                         <!-- use Math.round  -->
+                         <% 
+                         subtotal=Math.round(subtotal);
+                         gstAMT=Math.round(gstAMT);
+                     %>
+                     <p><%=subtotal%></p>
+                     <p><%=gstAMT%></p>
+                     <p><%=gstAMT%></p>
+                     <!-- total -->
+                     <% let total=subtotal+gstAMT+gstAMT%>
+                     <p><%=total%></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+
+                    </td>
+                    <td colspan="4">
+                        <p>Authorized Signature</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
