@@ -1,7 +1,7 @@
 <div class="container">
+  <div><a href="/invoice/getInvoice/<%=customer._id%>">download invoice</a></div>
   <div class="row">
     <div class="col-6">
-
       <div class="user-create-form">
         <h3>Add Product</h3>
         <form action="/customer/addProducts" method="post">
@@ -72,7 +72,7 @@
                   <%=cust.estimateDate%>
                 </td>
               </tr>
-              
+
             <%}%>
           </tbody>
         </table>
