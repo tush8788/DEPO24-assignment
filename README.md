@@ -25,12 +25,12 @@ This is DEPO24 assignment it is created for manage business. add customers, prod
 
 ##Setup in Local System
 
-clone the repo in your System.
-go to folder you want open cmd/power shell/git-bash.
-then just run:- git clone https://github.com/tush8788/DEPO24-assignment.git
-after download done
-open command prompt and Type 'npm install' for download all dependencies
-then just "npm start"/ if npm start is not work just run this command 'node index.js'
-then go localhost:8000
-This Site is hosted on cyclic.sh
-Access link "https://jolly-lamb-outfit.cyclic.app/"
+1. clone the repo in your System.
+2. go to folder you want open cmd/power shell/git-bash.
+3. then just run:- git clone https://github.com/tush8788/DEPO24-assignment.git
+4. after download done
+5. open command prompt and Type 'npm install' for download all dependencies
+6. then just "npm start"/ if npm start is not work just run this command 'node index.js'
+7. then go localhost:8000
+8. This Site is hosted on cyclic.sh
+9. Access link "https://jolly-lamb-outfit.cyclic.app/"
